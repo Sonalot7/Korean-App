@@ -3,164 +3,138 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Korebloom — Korean Learning Garden</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Korebloom — Korean Learning</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="page-bg">
-    <!-- Decorative floating blossoms -->
-    <div class="blossom b1">🌸</div>
-    <div class="blossom b2">🌸</div>
-    <div class="blossom b3">🌸</div>
-    <div class="blossom b4">🌸</div>
-  </div>
-
-  <main class="container">
-    <header class="header">
-      <div class="title">
-        <h1>Korebloom</h1>
-        <p class="subtitle">🌸 Learn Korean — play quizzes, practice pronunciation, and bloom your Korean 🌸</p>
+  <div class="container">
+    <header class="topbar">
+      <div class="title-block">
+        <h1>Korebloom — Pro Korean Learning</h1>
+        <p class="subtitle">Category-based quizzes · 100+ questions · cute Korea-related animations</p>
       </div>
-      <div class="score-panel">
-        <div>Progress</div>
-        <div id="global-progress">0%</div>
+
+      <!-- Removed trophy icon as requested. Left two white boxes like in picture -->
+      <div class="icons-row">
+        <div class="small-square"></div>
+        <div class="small-square"></div>
       </div>
     </header>
 
-    <nav class="nav">
-      <button data-section="home" class="nav-btn active">Home</button>
-      <button data-section="hangul" class="nav-btn">Hangul</button>
-      <button data-section="numbers" class="nav-btn">Numbers</button>
-      <button data-section="body" class="nav-btn">Body Parts</button>
-      <button data-section="travel" class="nav-btn">Travel Phrases</button>
-      <button data-section="quiz" class="nav-btn">Play Quiz</button>
+    <nav class="tabs">
+      <button class="tab primary">Learn & Practice</button>
+      <button class="tab">Quick Quiz</button>
+      <button class="tab">Mixed Mode</button>
+      <button class="tab">Review</button>
     </nav>
 
-    <section id="content" class="content">
-      <!-- Home -->
-      <div id="home" class="section active-section">
-        <div class="card hero">
-          <h2>🌸 Welcome to Korebloom 🌸</h2>
-          <p>Choose a lesson above. Use flashcards to practice, then test yourself with long quizzes. Your progress is saved automatically.</p>
-          <div class="hero-actions">
-            <button id="start-quiz-btn" class="primary">Start a Random Quiz</button>
-            <button id="review-btn" class="secondary">Review Saved Progress</button>
-          </div>
-        </div>
+    <main class="main-card">
+      <section class="categories">
+        <h2>Categories</h2>
 
-        <div class="card features">
-          <h3>Features</h3>
-          <ul>
-            <li>Flashcards with cute animations & TTS (Korean pronunciation)</li>
-            <li>Large randomized quizzes (10–30 questions)</li>
-            <li>Progress saved in your browser</li>
-            <li>Pink aesthetic & playful decorations</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Hangul -->
-      <div id="hangul" class="section">
-        <div class="section-head">
-          <h2>Hangul — Letters & Examples</h2>
-          <div class="controls">
-            <button class="primary" onclick="playAll('hangul')">Play All</button>
-            <button class="secondary" onclick="shuffleFlashcards('hangul')">Shuffle</button>
-          </div>
-        </div>
-        <div id="hangul-cards" class="grid"></div>
-        <div class="card small">
-          <button class="primary" onclick="startLessonQuiz('hangul',15)">Take 15-question Hangul Quiz</button>
-          <button class="secondary" onclick="openFlashcardMode('hangul')">Flashcard Mode</button>
-        </div>
-      </div>
-
-      <!-- Numbers -->
-      <div id="numbers" class="section">
-        <div class="section-head">
-          <h2>Numbers — Native & Sino</h2>
-          <div class="controls">
-            <button class="primary" onclick="playAll('numbers')">Play All</button>
-            <button class="secondary" onclick="shuffleFlashcards('numbers')">Shuffle</button>
-          </div>
-        </div>
-        <div id="numbers-cards" class="grid"></div>
-        <div class="card small">
-          <button class="primary" onclick="startLessonQuiz('numbers',12)">Take 12-question Numbers Quiz</button>
-          <button class="secondary" onclick="openFlashcardMode('numbers')">Flashcard Mode</button>
-        </div>
-      </div>
-
-      <!-- Body -->
-      <div id="body" class="section">
-        <div class="section-head">
-          <h2>Body Parts — Basic Vocabulary</h2>
-          <div class="controls">
-            <button class="primary" onclick="playAll('body')">Play All</button>
-            <button class="secondary" onclick="shuffleFlashcards('body')">Shuffle</button>
-          </div>
-        </div>
-        <div id="body-cards" class="grid"></div>
-        <div class="card small">
-          <button class="primary" onclick="startLessonQuiz('body',14)">Take 14-question Body Quiz</button>
-          <button class="secondary" onclick="openFlashcardMode('body')">Flashcard Mode</button>
-        </div>
-      </div>
-
-      <!-- Travel -->
-      <div id="travel" class="section">
-        <div class="section-head">
-          <h2>Travel Phrases — For Tourists</h2>
-          <div class="controls">
-            <button class="primary" onclick="playAll('travel')">Play All</button>
-            <button class="secondary" onclick="shuffleFlashcards('travel')">Shuffle</button>
-          </div>
-        </div>
-        <div id="travel-cards" class="grid"></div>
-        <div class="card small">
-          <button class="primary" onclick="startLessonQuiz('travel',18)">Take 18-question Travel Quiz</button>
-          <button class="secondary" onclick="openFlashcardMode('travel')">Flashcard Mode</button>
-        </div>
-      </div>
-
-      <!-- Quiz -->
-      <div id="quiz" class="section">
-        <div class="card quiz-card" id="quiz-card">
-          <div id="quiz-info" class="quiz-info">Ready to play — choose a lesson and click "Start Quiz"</div>
-          <div id="quiz-area" class="quiz-area hidden">
-            <div id="question-count" class="question-count"></div>
-            <div id="question-text" class="question-text"></div>
-            <div id="choices" class="choices"></div>
-            <div class="quiz-controls">
-              <button id="skip-btn" class="secondary">Skip</button>
-              <button id="next-btn" class="primary">Next</button>
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Hangul (Letters & Vowels)</h3>
+            <p class="muted">36 items — letters & syllables</p>
+            <div class="card-actions">
+              <a href="quiz.html?cat=hangul" class="btn btn-primary">Quiz</a>
+              <button class="btn-outline" data-flash="hangul">Flashcards</button>
             </div>
-          </div>
-          <div id="quiz-result" class="quiz-result hidden"></div>
+          </article>
+
+          <article class="card">
+            <h3>Numbers (Native & Sino)</h3>
+            <p class="muted">28 items — vocab & phrases</p>
+            <div class="card-actions">
+              <a href="quiz.html?cat=numbers" class="btn btn-primary">Quiz</a>
+              <button class="btn-outline" data-flash="numbers">Flashcards</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Body Parts</h3>
+            <p class="muted">50 items — vocab & phrases</p>
+            <div class="card-actions">
+              <a href="quiz.html?cat=bodyparts" class="btn btn-primary">Quiz</a>
+              <button class="btn-outline" data-flash="bodyparts">Flashcards</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Travel Phrases</h3>
+            <p class="muted">50 items — vocab & phrases</p>
+            <div class="card-actions">
+              <a href="quiz.html?cat=travel" class="btn btn-primary">Quiz</a>
+              <button class="btn-outline" data-flash="travel">Flashcards</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Daily Expressions</h3>
+            <p class="muted">50 items — vocab & phrases</p>
+            <div class="card-actions">
+              <a href="quiz.html?cat=daily" class="btn btn-primary">Quiz</a>
+              <button class="btn-outline" data-flash="daily">Flashcards</button>
+            </div>
+          </article>
         </div>
-      </div>
+      </section>
 
-    </section>
+      <section class="quiz-preview">
+        <h3>Quiz — Travel Phrases</h3>
+        <p class="muted small">12 questions · Progress 4 / 12</p>
 
-    <footer class="footer">
-      <div>Made by Sonal Shaktawat • Korebloom</div>
-      <div><small>Progress is saved in this browser (localStorage).</small></div>
-    </footer>
-  </main>
+        <div class="question-card">
+          <div class="korean-big">영수증 주세요</div>
 
-  <!-- Flashcard modal -->
-  <div id="flashcard-modal" class="modal hidden">
-    <div class="flashcard">
-      <div id="fc-ko" class="fc-ko">한국어</div>
-      <div id="fc-en" class="fc-en">English</div>
-      <div class="fc-controls">
-        <button onclick="flipFlashcard()" class="secondary">Flip</button>
-        <button onclick="playCurrentFlashcard()" class="primary">🔊 Pronounce</button>
-        <button onclick="closeFlashcardMode()" class="secondary">Close</button>
-      </div>
-    </div>
+          <div class="options-grid">
+            <div class="choice">Please make it takeaway</div>
+            <div class="choice">Please give me a receipt</div>
+            <div class="choice">Sorry / Excuse me</div>
+            <div class="choice">Where is the hospital?</div>
+          </div>
+
+          <div class="controls">
+            <button class="btn-outline">Skip</button>
+            <a href="quiz.html?cat=travel" class="btn btn-primary">Next</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="challenge small-card">
+        <h4>Want a challenge?</h4>
+        <p class="muted">Try timed mixed quizzes to boost speed and retention.</p>
+        <div class="small-controls">
+          <a href="quiz.html?mode=20timed" class="btn small">20 Q Timed</a>
+          <a href="quiz.html?mode=40mixed" class="btn small white">40 Q Mixed</a>
+        </div>
+      </section>
+
+      <section class="progress small-card">
+        <div class="progress-row">
+          <div>
+            <p class="muted">Overall Progress</p>
+            <p class="big">25%</p>
+          </div>
+          <div class="progress-controls">
+            <button class="btn white">Open Flashcards</button>
+            <button class="btn white">Review Progress</button>
+          </div>
+        </div>
+
+        <div class="quick-controls">
+          <button class="btn white">Reset Progress</button>
+          <button class="btn">Shuffle Questions</button>
+          <button class="btn white">Export</button>
+        </div>
+      </section>
+
+      <p class="foot muted center">Saved locally in your browser</p>
+      <p class="foot muted center">Made by Sonal Shaktawat</p>
+    </main>
   </div>
 
-  <script src="script.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
+ 
